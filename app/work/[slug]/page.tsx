@@ -263,7 +263,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
       {/* 01 — HERO */}
       {/* ══════════════════════════════════════════════════════════════════ */}
       <section style={{ height:"100vh", position:"relative", overflow:"hidden", paddingTop:104 }}>
-        <img src={p.cover} alt={p.title} style={{
+        <img src={p.covers[0]} alt={p.title} style={{
           position:"absolute", inset:0, width:"100%", height:"100%",
           objectFit:"cover", filter:"brightness(.40) saturate(.9)",
         }}/>
@@ -347,7 +347,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
       {/* 03 — FIRST IMAGE */}
       {/* ══════════════════════════════════════════════════════════════════ */}
       <section style={{ margin:"0 80px" }}>
-        <ImageBlock src={p.cover} caption={`${p.title} — Primary visual`} span="full" color={p.color}/>
+        <ImageBlock src={p.covers[0]} caption={`${p.title} — Primary visual`} span="full" color={p.color}/>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════ */}
@@ -404,8 +404,8 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
       {/* 06 — SECOND IMAGE PAIR */}
       {/* ══════════════════════════════════════════════════════════════════ */}
       <section style={{ margin:"80px", display:"grid", gridTemplateColumns:"1fr 1fr", gap:2 }}>
-        <ImageBlock src={p.thumb} caption="Process" span="half" color={p.color}/>
-        <ImageBlock src={p.thumb} caption="Detail" span="half" color={p.color}/>
+        <ImageBlock src={p.covers[1] || p.covers[0]} caption="Process" span="half" color={p.color}/>
+        <ImageBlock src={p.covers[2] || p.covers[0]} caption="Detail" span="half" color={p.color}/>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════ */}
@@ -438,7 +438,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
       {/* ══════════════════════════════════════════════════════════════════ */}
       <section style={{ position:"relative" }}>
         <div style={{ margin:"0 80px 2px" }}>
-          <ImageBlock src={p.cover} caption="Outcome" span="full" color={p.color}/>
+          <ImageBlock src={p.covers[3] || p.covers[0]} caption="Outcome" span="full" color={p.color}/>
         </div>
         <div style={{ position:"relative", padding:"100px 80px", background:"rgba(0,0,0,.03)" }}>
           {/* Large section number ghost */}
@@ -470,7 +470,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
           onMouseEnter={() => { setHov(true); S.tick(1.1); }}
           onMouseLeave={() => setHov(false)}
           onClick={() => { S.pop(); navigate(`/work/${next.id}`, "ink"); }}>
-          <img src={next.cover} alt={next.title} style={{
+          <img src={next.covers[0]} alt={next.title} style={{
             position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover",
             filter:`brightness(${hov?.45:.30}) saturate(.9)`,
             transform: hov?"scale(1.04)":"scale(1)",
