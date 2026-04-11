@@ -145,14 +145,15 @@ export function LoaderGate() {
       
       // Cyber/Glass colors mapping to the home page's cyan/white glow
       const ribbons = [
-        { color: "rgba(0, 200, 255, 0.4)", offset: 0, p: 3, q: 4 },     // Electric Cyan
-        { color: "rgba(184, 240, 255, 0.4)", offset: 2.1, p: 3, q: 4 }, // Icy White/Blue
-        { color: "rgba(0, 80, 255, 0.4)", offset: 4.2, p: 3, q: 4 }     // Deep Blue
-      ];
+  { color: "rgba(255, 255, 255, 0.15)", offset: 0, p: 3, q: 4 },     // Icy White
+  { color: "rgba(184, 240, 255, 0.25)", offset: 2.1, p: 3, q: 4 },   // Domani Cyan
+  { color: "rgba(100, 200, 255, 0.15)", offset: 4.2, p: 3, q: 4 }    // Deep Electric Blue
+];
 
       ribbons.forEach((ribbon) => {
         ctx.beginPath();
         const resolution = 50 + (pct * 250); 
+        
         
         for (let i = 0; i <= resolution; i++) {
           const t_param = (i / resolution) * Math.PI * 2;
@@ -173,7 +174,7 @@ export function LoaderGate() {
         }
 
         ctx.strokeStyle = ribbon.color;
-        ctx.lineWidth = 1 + (pct * 8) + (Math.sin(time * 3 + ribbon.offset) * 2);
+        ctx.lineWidth = 0.5 + (pct * 2) + (Math.sin(time * 3 + ribbon.offset) * 1);
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.stroke();
@@ -270,7 +271,7 @@ export function LoaderGate() {
         {/* BOTTOM */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "rgba(184, 240, 255, 0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
           <div>Design & Engineering</div>
-          <div>All Systems Nominal</div>
+          <div>We Build Tomorrow</div>
         </div>
 
       </div>
